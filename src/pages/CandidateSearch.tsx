@@ -35,6 +35,17 @@ interface Candidate {
       }, []);
     
       const saveCandidate = () => {
+
+            // const candidate = candidates[currentIndex];
+    const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
+    localStorage.setItem('savedCandidates', JSON.stringify([...saved, currentCandidate]));
+    showNextCandidate();
+  };
+
+  const rejectCandidate = () => {
+    showNextCandidate();
+  };
+
     
 
 

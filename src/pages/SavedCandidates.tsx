@@ -37,7 +37,8 @@ return (
           </tr>
         </thead>
         <tbody>
-          {savedCandidates.map((candidate, index) => (
+        
+        {savedCandidates.map((candidate, index) => (
             <tr key={index}>
               <td><img src={candidate.avatar_url} alt="Avatar" width="70px" /></td>
               <td>{candidate.login}</td>
@@ -59,6 +60,9 @@ return (
 };
 
 export default SavedCandidates;
+
+
+
 
 
 

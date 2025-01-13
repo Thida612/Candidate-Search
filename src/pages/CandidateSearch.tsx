@@ -25,6 +25,18 @@ interface Candidate {
     // console.log('searchGithubUser', candidate); // logs the user's profile data
     setCandidates(data.map((candidateOBJ:any) => candidateOBJ.login));
 
+        // const candidate = await searchGithubUser('Thida612');
+        const candidate = await searchGithubUser(data[0].login);
+        setCandidate(candidate);
+        setCurrentIndex(0);
+      };
+      useEffect(() => {
+        fetchCandidates();
+      }, []);
+    
+      const saveCandidate = () => {
+    
+
 
 
 

@@ -16,6 +16,13 @@ const rejectCandidate = (index: number) => {
   localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
 };
 
+if (!savedCandidates.length) {
+  return <h2>No saved candidates yet.</h2>;
+}
+
+return (
+  <section style={{ marginTop: '50px' }}>
+
 
 
 

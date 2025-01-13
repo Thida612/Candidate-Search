@@ -44,7 +44,21 @@ interface Candidate {
 
   const rejectCandidate = () => {
     showNextCandidate();
+  
   };
+
+  const showNextCandidate = async () => {
+    if (currentIndex < candidates.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      const candidate = await searchGithubUser(candidates[currentIndex]);
+      setCandidate(candidate);
+    } else {
+      await fetchCandidates();
+
+    }
+  };
+
+
 
     
 

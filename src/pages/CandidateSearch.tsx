@@ -71,10 +71,6 @@ interface Candidate {
 
     
 
-
-
-
-const CandidateSearch = () => {
   return <h1>CandidateSearch</h1>;
 };
 

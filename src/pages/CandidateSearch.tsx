@@ -58,6 +58,15 @@ interface Candidate {
     }
   };
 
+  if (!candidates.length) {
+    return <h2>Loading candidates...</h2>;
+  }
+
+  // const currentCandidate = candidates[currentIndex];
+
+  return (
+    <section className="candidate-container">
+
 
 
     

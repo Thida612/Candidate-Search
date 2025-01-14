@@ -3,27 +3,27 @@ import { Candidate } from '../interfaces/Candidate.interface';
 
 
 const SavedCandidates = () => {
-const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
+  const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
-useEffect(() => {
-  const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
-  setSavedCandidates(saved);
-}, []);
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
+    setSavedCandidates(saved);
+  }, []);
 
-const rejectCandidate = (index: number) => {
-  const updatedCandidates = savedCandidates.filter((_, i) => i !== index);
-  setSavedCandidates(updatedCandidates);
-  localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
-};
+  const rejectCandidate = (index: number) => {
+    const updatedCandidates = savedCandidates.filter((_, i) => i !== index);
+    setSavedCandidates(updatedCandidates);
+    localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
+  };
 
-if (!savedCandidates.length) {
-  return <h2>No saved candidates yet.</h2>;
-}
+  if (!savedCandidates.length) {
+    return <h2>No saved candidates yet.</h2>;
+  }
 
-return (
-  <section style={{ marginTop: '50px' }}>
+  return (
+    <section style={{ marginTop: '50px' }}>
 
-<h1>Potential Candidates</h1>
+      <h1>Potential Candidates</h1>
       <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
         <thead>
           <tr>
@@ -37,8 +37,7 @@ return (
           </tr>
         </thead>
         <tbody>
-        
-        {savedCandidates.map((candidate, index) => (
+          {savedCandidates.map((candidate, index) => (
             <tr key={index}>
               <td><img src={candidate.avatar_url} alt="Avatar" width="70px" /></td>
               <td>{candidate.login}</td>
@@ -60,13 +59,3 @@ return (
 };
 
 export default SavedCandidates;
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 
-
-
 interface Candidate {
   avatar_url: string;
   login: string;
@@ -12,7 +10,7 @@ interface Candidate {
   bio?: string;
 }
 
-  const CandidateSearch = () => {
+const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -24,19 +22,17 @@ interface Candidate {
     
     // console.log('searchGithubUser', candidate); // logs the user's profile data
     setCandidates(data.map((candidateOBJ:any) => candidateOBJ.login));
+    // const candidate = await searchGithubUser('Thida612');
+     const candidate = await searchGithubUser(data[0].login);
+    setCandidate(candidate);
+    setCurrentIndex(0);
+  };
+  useEffect(() => {
+    fetchCandidates();
+  }, []);
 
-        // const candidate = await searchGithubUser('Thida612');
-        const candidate = await searchGithubUser(data[0].login);
-        setCandidate(candidate);
-        setCurrentIndex(0);
-      };
-      useEffect(() => {
-        fetchCandidates();
-      }, []);
-    
-      const saveCandidate = () => {
-
-            // const candidate = candidates[currentIndex];
+  const saveCandidate = () => {
+    // const candidate = candidates[currentIndex];
     const saved = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
     localStorage.setItem('savedCandidates', JSON.stringify([...saved, currentCandidate]));
     showNextCandidate();
@@ -44,7 +40,6 @@ interface Candidate {
 
   const rejectCandidate = () => {
     showNextCandidate();
-  
   };
 
   const showNextCandidate = async () => {
@@ -66,9 +61,7 @@ interface Candidate {
 
   return (
     <section className="candidate-container">
-
-
-<h1>Candidate Search</h1>
+      <h1>Candidate Search</h1>
       <div className="candidate-card">
         <img src={currentCandidate?.avatar_url} alt="Candidate Avatar" />
         <h2>{currentCandidate?.login}</h2>
@@ -90,7 +83,5 @@ interface Candidate {
 };
 
 export default CandidateSearch;
-
-
 
 
